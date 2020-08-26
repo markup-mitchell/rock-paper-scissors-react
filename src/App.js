@@ -40,23 +40,20 @@ class App extends Component {
       houseChoice: 'pending',
       winner: 'pending'
     };
-    this.handleHouseChoice = this.handleHouseChoice.bind(this);
-    this.handlePlayerChoice = this.handlePlayerChoice.bind(this);
-    this.startNewRound = this.startNewRound.bind(this);
   }
-  handleHouseChoice() {
+  handleHouseChoice = () => {
     let choice = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
     this.setState({ houseChoice: choice });
-  }
-  handlePlayerChoice(e) {
+  };
+  handlePlayerChoice = (e) => {
     this.setState({ playerChoice: e.target.value });
-  }
-  startNewRound() {
+  };
+  startNewRound = () => {
     this.setState({
       playerChoice: 'pending',
       houseChoice: 'pending'
     });
-  }
+  };
   incrementScore = () => {
     let newScore = this.state.score + 1;
     this.setState({ score: newScore });

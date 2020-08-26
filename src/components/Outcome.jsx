@@ -13,7 +13,7 @@ const Button = styled.button`
 `;
 
 const Outcome = ({ playerChoice, houseChoice, playAgain, incrementScore }) => {
-  let [outcome, updateOutcome] = useState('pending');
+  let [outcome, updateOutcome] = useState(null);
   useEffect(() => {
     switch (true) {
       case playerChoice === houseChoice:
