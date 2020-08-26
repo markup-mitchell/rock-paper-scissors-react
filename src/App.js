@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Layout from './components/Layout';
 import PlayerChoose from './components/PlayerChoose';
 import HouseChoose from './components/HouseChoose';
+import Outcome from './components/Outcome';
 import Winner from './components/Winner';
 import icon_rock from './images/icon-rock.svg';
 import icon_paper from './images/icon-paper.svg';
@@ -67,7 +68,10 @@ class App extends Component {
           )}
           {this.state.playerChoice === 'pending' ||
           this.state.houseChoice === 'pending' ? null : (
-            <h1>CHOICES MADE!</h1>
+            <Outcome
+              playerChoice={this.state.playerChoice}
+              houseChoice={this.state.houseChoice}
+            />
           )}
         </Layout>
       </div>

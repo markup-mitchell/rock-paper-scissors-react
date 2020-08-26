@@ -21,8 +21,10 @@ const ScoreBox = styled.div`
 const Layout = ({ children }) => {
   return (
     <Wrapper>
-      <ScoreBox></ScoreBox>
-      {children}
+      <div>
+        <ScoreBox></ScoreBox>
+        {children}
+      </div>
       <button>RULES</button>
     </Wrapper>
   );

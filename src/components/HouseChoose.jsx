@@ -17,16 +17,13 @@ const HouseChoose = ({ playerChoice, houseChoice, handleHouseChoice }) => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <>
-      HouseChoose
-      <StyledDiv>
-        <ChoiceButton choice={playerChoice} />
-        <ChoiceButton
-          choice={houseChoice}
-          handleHouseChoice={handleHouseChoice}
-        />
-      </StyledDiv>
-    </>
+    <StyledDiv>
+      <ChoiceButton choice={playerChoice} />
+      <ChoiceButton
+        choice={houseChoice}
+        handleHouseChoice={handleHouseChoice}
+      />
+    </StyledDiv>
   );
 };
 
