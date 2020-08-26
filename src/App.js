@@ -34,6 +34,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      score: 0,
       gameState: 'new',
       playerChoice: 'pending',
       houseChoice: 'pending',
@@ -41,6 +42,7 @@ class App extends Component {
     };
     this.handleHouseChoice = this.handleHouseChoice.bind(this);
     this.handlePlayerChoice = this.handlePlayerChoice.bind(this);
+    this.startNewRound = this.startNewRound.bind(this);
   }
   handleHouseChoice() {
     let choice = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
@@ -49,11 +51,18 @@ class App extends Component {
   handlePlayerChoice(e) {
     this.setState({ playerChoice: e.target.value });
   }
+  startNewRound() {
+    this.setState({
+      playerChoice: 'pending',
+      houseChoice: 'pending',
+      score: this.state.score + 1
+    });
+  }
 
   render() {
     return (
       <div className="App">
-        <Layout>
+        <Layout score={this.state.score}>
           {this.state.playerChoice === 'pending' ? (
             <PlayerChoose
               choice={choice}
@@ -71,6 +80,7 @@ class App extends Component {
             <Outcome
               playerChoice={this.state.playerChoice}
               houseChoice={this.state.houseChoice}
+              playAgain={this.startNewRound}
             />
           )}
         </Layout>

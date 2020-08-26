@@ -18,11 +18,11 @@ const ScoreBox = styled.div`
   background-color: pink;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, score }) => {
   return (
     <Wrapper>
       <div>
-        <ScoreBox></ScoreBox>
+        <ScoreBox>Score: {score}</ScoreBox>
         {children}
       </div>
       <button>RULES</button>
