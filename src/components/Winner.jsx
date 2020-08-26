@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledText = styled.p`
-  font-size: 5.6rem;
+  font-size: 56px;
   color: white;
   text-align: center;
 `;
