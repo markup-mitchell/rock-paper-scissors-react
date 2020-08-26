@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import ChoiceButton from './components/ChoiceButton';
-
+import Winner from './components/Winner';
 import icon_rock from './images/icon-rock.svg';
 import icon_paper from './images/icon-paper.svg';
 import icon_scissors from './images/icon-scissors.svg';
@@ -24,12 +24,14 @@ const choice = {
 };
 
 function App() {
-  const [score, updateScore] = useState(0);
-  let [playerChoice, updatePlayerChoice] = useState('pending');
   let houseChoice = ['rock', 'paper', 'scissors'][
     Math.floor(Math.random() * 3)
   ];
+  let [score, updateScore] = useState(0);
+  let [playerChoice, updatePlayerChoice] = useState('pending');
+  let [winner, updateWinner] = useState('pending'); // pending | none | house | player
   const handleSelect = (e) => updatePlayerChoice(e.target.value);
+  let getWinner = () => updateWinner((winner = 'none'));
   return (
     <div className="App">
       <header className="App-header">
@@ -48,14 +50,12 @@ function App() {
               you picked <ChoiceButton choice={choice[playerChoice]} /> the
               house picked <ChoiceButton choice={choice[houseChoice]} />
             </p>
-            <p>OUTCOME!</p>
-            <button
-              onClick={() => updatePlayerChoice((playerChoice = 'pending'))}
-            >
-              play again
-            </button>
+            <Winner winner={winner} />
           </>
         )}
+        <button onClick={() => updatePlayerChoice((playerChoice = 'pending'))}>
+          play again
+        </button>
       </header>
     </div>
   );
