@@ -4,7 +4,6 @@ import Layout from './components/Layout';
 import PlayerChoose from './components/PlayerChoose';
 import HouseChoose from './components/HouseChoose';
 import Outcome from './components/Outcome';
-import Winner from './components/Winner';
 import icon_rock from './images/icon-rock.svg';
 import icon_paper from './images/icon-paper.svg';
 import icon_scissors from './images/icon-scissors.svg';

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ChoiceButton from './ChoiceButton';
 
 const StyledDiv = styled.div`
-  background-color: red;
+  background-color: transparent;
 `;
 
 const FlexBetween = styled.div`

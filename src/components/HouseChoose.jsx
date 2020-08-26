@@ -6,7 +6,15 @@ import ChoiceButton from './ChoiceButton';
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: red;
+  .choice {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  margin-bottom: 6.2rem;
+  p {
+    margin-bottom: 0;
+  }
 `;
 
 const HouseChoose = ({ playerChoice, houseChoice, handleHouseChoice }) => {
@@ -18,11 +26,17 @@ const HouseChoose = ({ playerChoice, houseChoice, handleHouseChoice }) => {
   }, []);
   return (
     <StyledDiv>
-      <ChoiceButton choice={playerChoice} />
-      <ChoiceButton
-        choice={houseChoice}
-        handleHouseChoice={handleHouseChoice}
-      />
+      <div className="choice">
+        <ChoiceButton choice={playerChoice} />
+        <p>YOU PICKED</p>
+      </div>
+      <div className="choice">
+        <ChoiceButton
+          choice={houseChoice}
+          handleHouseChoice={handleHouseChoice}
+        />
+        <p>THE HOUSE PICKED</p>
+      </div>
     </StyledDiv>
   );
 };
