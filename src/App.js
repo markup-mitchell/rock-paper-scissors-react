@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
+import Layout from './components/Layout';
+import PlayerChoose from './components/PlayerChoose';
+import HouseChoose from './components/HouseChoose';
 import ChoiceButton from './components/ChoiceButton';
 import Winner from './components/Winner';
 import icon_rock from './images/icon-rock.svg';
@@ -20,79 +23,43 @@ const choice = {
   scissors: {
     name: 'scissors',
     icon: icon_scissors
+  },
+  pending: {
+    name: 'pending',
+    icon: null
   }
 };
 
-function App() {
-  let [houseChoice, updateHouseChoice] = useState('pending');
-  let [score, updateScore] = useState(0);
-  let [playerChoice, updatePlayerChoice] = useState('pending');
-  let [winner, updateWinner] = useState('pending'); // pending | none | house | player
-  useEffect(() => {
-    updateWinner(
-      (houseChoice = ['rock', 'paper', 'scissors'][
-        Math.floor(Math.random() * 3)
-      ])
-    );
-  }, [playerChoice]);
-  useEffect(() => {
-    updateWinner(
-      (winner = () => {
-        switch (true) {
-          case playerChoice === houseChoice:
-            return 'draw';
-            break;
-          case playerChoice === 'rock' && houseChoice === 'scissors':
-            return 'player';
-            break;
-          case playerChoice === 'rock' && houseChoice === 'paper':
-            return 'house';
-            break;
-          case playerChoice === 'paper' && houseChoice === 'rock':
-            return 'player';
-            break;
-          case playerChoice === 'paper' && houseChoice === 'scissors':
-            return 'house';
-            break;
-          case playerChoice === 'scissors' && houseChoice === 'paper':
-            return 'player';
-            break;
-          case playerChoice === 'scissors' && houseChoice === 'rock':
-            return 'house';
-            break;
-          default:
-            return 'error';
-        }
-      })
-    );
-  }, [houseChoice]);
-  const handleSelect = (e) => updatePlayerChoice(e.target.value);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>{score}</h1>
-        <p>{playerChoice}</p>
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      gameState: 'new',
+      playerChoice: 'rock',
+      houseChoice: 'pending',
+      winner: 'pending'
+    };
+    this.handleChoice = this.handleChoice.bind(this);
+  }
+  handleChoice() {
+    let choice = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
+    this.setState({ houseChoice: choice });
+  }
 
-        {winner === 'pending' ? (
-          <>
-            <ChoiceButton choice={choice.rock} onClick={handleSelect} />
-            <ChoiceButton choice={choice.paper} onClick={handleSelect} />
-            <ChoiceButton choice={choice.scissors} onClick={handleSelect} />
-          </>
-        ) : (
-          <>
-            <p>
-              you picked {playerChoice} the house picked {houseChoice}
-            </p>
-            <Winner winner={winner} />
-          </>
-        )}
-        <button onClick={() => updatePlayerChoice((playerChoice = 'pending'))}>
-          play again
-        </button>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <Layout>
+          {/* <PlayerChoose></PlayerChoose> */}
+          <HouseChoose
+            playerChoice={choice[this.state.playerChoice]}
+            houseChoice={choice[this.state.houseChoice]}
+            handleChoice={this.handleChoice}
+          />
+        </Layout>
+      </div>
+    );
+  }
 }
 
 export default App;

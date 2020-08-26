@@ -20,7 +20,7 @@ const StyledButton = styled.button`
 const ChoiceButton = ({ onClick, choice: { name, icon } }) => {
   return (
     <StyledButton onClick={onClick} value={name}>
-      <img src={icon} alt={name} />
+      {!icon ? null : <img src={icon} alt={name} />}
     </StyledButton>
   );
 };
