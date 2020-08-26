@@ -54,10 +54,13 @@ class App extends Component {
   startNewRound() {
     this.setState({
       playerChoice: 'pending',
-      houseChoice: 'pending',
-      score: this.state.score + 1
+      houseChoice: 'pending'
     });
   }
+  incrementScore = () => {
+    let newScore = this.state.score + 1;
+    this.setState({ score: newScore });
+  };
 
   render() {
     return (
@@ -81,6 +84,7 @@ class App extends Component {
               playerChoice={this.state.playerChoice}
               houseChoice={this.state.houseChoice}
               playAgain={this.startNewRound}
+              incrementScore={this.incrementScore}
             />
           )}
         </Layout>

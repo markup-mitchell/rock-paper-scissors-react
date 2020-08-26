@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -12,26 +12,33 @@ const Button = styled.button`
   background-color: white;
 `;
 
-const Outcome = ({ playerChoice, houseChoice, playAgain }) => {
-  let outcome = () => {
+const Outcome = ({ playerChoice, houseChoice, playAgain, incrementScore }) => {
+  let [outcome, updateOutcome] = useState('pending');
+  useEffect(() => {
     switch (true) {
       case playerChoice === houseChoice:
-        return 'draw';
+        updateOutcome((outcome = 'draw'));
+        break;
       case (playerChoice === 'rock' && houseChoice === 'scissors') ||
         (playerChoice === 'paper' && houseChoice === 'rock') ||
         (playerChoice === 'scissors' && houseChoice === 'paper'):
-        return 'you win';
+        updateOutcome((outcome = 'you win'));
+        incrementScore();
+        break;
       case (playerChoice === 'rock' && houseChoice === 'paper') ||
         (playerChoice === 'paper' && houseChoice === 'scissors') ||
         (playerChoice === 'scissors' && houseChoice === 'rock'):
-        return 'you lose';
+        updateOutcome((outcome = 'you lose'));
+        break;
       default:
-        return 'error';
+        updateOutcome((outcome = 'error'));
+        break;
     }
-  };
+  }, []);
+
   return (
     <StyledDiv>
-      {outcome()}
+      {outcome}
       <Button onClick={playAgain}>play again?</Button>
     </StyledDiv>
   );
