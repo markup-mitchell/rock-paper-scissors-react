@@ -7,10 +7,28 @@ const StyledDiv = styled.div`
   background-color: red;
 `;
 
-const PlayerChoose = () => {
+const FlexBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const FlexCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const PlayerChoose = ({
+  handlePlayerChoice,
+  choice: { rock, paper, scissors }
+}) => {
   return (
     <StyledDiv>
-      <ChoiceButton choice={{ name: 'rock', icon: 'rock' }} />
+      <FlexBetween>
+        <ChoiceButton choice={rock} handler={handlePlayerChoice} />
+        <ChoiceButton choice={paper} handler={handlePlayerChoice} />
+      </FlexBetween>
+      <FlexCenter>
+        <ChoiceButton choice={scissors} handler={handlePlayerChoice} />
+      </FlexCenter>
     </StyledDiv>
   );
 };

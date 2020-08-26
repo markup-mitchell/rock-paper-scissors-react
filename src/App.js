@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Layout from './components/Layout';
 import PlayerChoose from './components/PlayerChoose';
 import HouseChoose from './components/HouseChoose';
-import ChoiceButton from './components/ChoiceButton';
 import Winner from './components/Winner';
 import icon_rock from './images/icon-rock.svg';
 import icon_paper from './images/icon-paper.svg';
@@ -35,27 +34,41 @@ class App extends Component {
     super();
     this.state = {
       gameState: 'new',
-      playerChoice: 'rock',
+      playerChoice: 'pending',
       houseChoice: 'pending',
       winner: 'pending'
     };
-    this.handleChoice = this.handleChoice.bind(this);
+    this.handleHouseChoice = this.handleHouseChoice.bind(this);
+    this.handlePlayerChoice = this.handlePlayerChoice.bind(this);
   }
-  handleChoice() {
+  handleHouseChoice() {
     let choice = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
     this.setState({ houseChoice: choice });
+  }
+  handlePlayerChoice(e) {
+    this.setState({ playerChoice: e.target.value });
   }
 
   render() {
     return (
       <div className="App">
         <Layout>
-          {/* <PlayerChoose></PlayerChoose> */}
-          <HouseChoose
-            playerChoice={choice[this.state.playerChoice]}
-            houseChoice={choice[this.state.houseChoice]}
-            handleChoice={this.handleChoice}
-          />
+          {this.state.playerChoice === 'pending' ? (
+            <PlayerChoose
+              choice={choice}
+              handlePlayerChoice={this.handlePlayerChoice}
+            />
+          ) : (
+            <HouseChoose
+              playerChoice={choice[this.state.playerChoice]}
+              houseChoice={choice[this.state.houseChoice]}
+              handleHouseChoice={this.handleHouseChoice}
+            />
+          )}
+          {this.state.playerChoice === 'pending' ||
+          this.state.houseChoice === 'pending' ? null : (
+            <h1>CHOICES MADE!</h1>
+          )}
         </Layout>
       </div>
     );
