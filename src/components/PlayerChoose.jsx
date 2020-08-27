@@ -2,18 +2,49 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ChoiceButton from './ChoiceButton';
+import triangle from '../images/bg-triangle.svg';
 
 const StyledDiv = styled.div`
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   background-color: transparent;
-`;
-
-const FlexBetween = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const FlexCenter = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  img {
+    padding: 6.4rem;
+    width: 60%;
+  }
+  @media (min-width: 700px) {
+    width: 476px;
+    height: 430px;
+  }
+  button {
+    position: unset;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .rock {
+    top: 0;
+    left: 0;
+  }
+  .paper {
+    top: 0;
+    right: 0;
+  }
+  .scissors {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+  }
 `;
 
 const PlayerChoose = ({
@@ -22,13 +53,16 @@ const PlayerChoose = ({
 }) => {
   return (
     <StyledDiv>
-      <FlexBetween>
+      <img src={triangle} alt="" />
+      <div className="rock absolute">
         <ChoiceButton choice={rock} handler={handlePlayerChoice} />
+      </div>
+      <div className="paper absolute">
         <ChoiceButton choice={paper} handler={handlePlayerChoice} />
-      </FlexBetween>
-      <FlexCenter>
+      </div>
+      <div className="scissors absolute">
         <ChoiceButton choice={scissors} handler={handlePlayerChoice} />
-      </FlexCenter>
+      </div>
     </StyledDiv>
   );
 };

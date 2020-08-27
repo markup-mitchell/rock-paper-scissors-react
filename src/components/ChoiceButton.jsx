@@ -15,6 +15,10 @@ const StyledButton = styled.button`
   img {
     pointer-events: none;
   }
+  @media (min-width: 700px) {
+    width: 20rem;
+    height: 20rem;
+  }
 `;
 
 const ChoiceButton = ({ handler, choice: { name, icon } }) => {

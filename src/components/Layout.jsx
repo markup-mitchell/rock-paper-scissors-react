@@ -1,16 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
-  background: purple;
-  padding: 3.2rem;
+const LayoutWrapper = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: radial-gradient(#1f3757, #131537);
+  align-items: center;
+  @media (min-width: 700px) {
+    max-width: 700px;
+    button {
+      position: absolute;
+      bottom: 3.2rem;
+      right: 3.2rem;
+    }
+  }
 `;
 
 const ScoreBox = styled.div`
@@ -54,7 +59,7 @@ const ScoreBox = styled.div`
 
 const Layout = ({ children, score }) => {
   return (
-    <Wrapper>
+    <LayoutWrapper>
       <div>
         <ScoreBox>
           <div className="flex-col">
@@ -80,7 +85,7 @@ const Layout = ({ children, score }) => {
         {children}
       </div>
       <button>RULES</button>
-    </Wrapper>
+    </LayoutWrapper>
   );
 };
 

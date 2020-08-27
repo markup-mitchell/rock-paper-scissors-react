@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ContentWrapper from './components/ContentWrapper';
 import Layout from './components/Layout';
 import PlayerChoose from './components/PlayerChoose';
 import HouseChoose from './components/HouseChoose';
@@ -61,29 +62,31 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Layout score={this.state.score}>
-          {this.state.playerChoice === 'pending' ? (
-            <PlayerChoose
-              choice={choice}
-              handlePlayerChoice={this.handlePlayerChoice}
-            />
-          ) : (
-            <HouseChoose
-              playerChoice={choice[this.state.playerChoice]}
-              houseChoice={choice[this.state.houseChoice]}
-              handleHouseChoice={this.handleHouseChoice}
-            />
-          )}
-          {this.state.playerChoice === 'pending' ||
-          this.state.houseChoice === 'pending' ? null : (
-            <Outcome
-              playerChoice={this.state.playerChoice}
-              houseChoice={this.state.houseChoice}
-              playAgain={this.startNewRound}
-              incrementScore={this.incrementScore}
-            />
-          )}
-        </Layout>
+        <ContentWrapper>
+          <Layout score={this.state.score}>
+            {this.state.playerChoice === 'pending' ? (
+              <PlayerChoose
+                choice={choice}
+                handlePlayerChoice={this.handlePlayerChoice}
+              />
+            ) : (
+              <HouseChoose
+                playerChoice={choice[this.state.playerChoice]}
+                houseChoice={choice[this.state.houseChoice]}
+                handleHouseChoice={this.handleHouseChoice}
+              />
+            )}
+            {this.state.playerChoice === 'pending' ||
+            this.state.houseChoice === 'pending' ? null : (
+              <Outcome
+                playerChoice={this.state.playerChoice}
+                houseChoice={this.state.houseChoice}
+                playAgain={this.startNewRound}
+                incrementScore={this.incrementScore}
+              />
+            )}
+          </Layout>
+        </ContentWrapper>
       </div>
     );
   }
