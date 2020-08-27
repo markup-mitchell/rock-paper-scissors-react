@@ -33,8 +33,8 @@ const choice = {
   pending: {
     name: 'pending',
     icon: null,
-    bg: 'blue',
-    bgShadow: 'blue'
+    bg: 'rgba(0,0,0,0.1)',
+    bgShadow: 'transparent'
   }
 };
 
@@ -43,7 +43,6 @@ class App extends Component {
     super();
     this.state = {
       score: 0,
-      gameState: 'new',
       playerChoice: 'pending',
       houseChoice: 'pending',
       winner: 'pending'
@@ -67,6 +66,10 @@ class App extends Component {
     this.setState({ score: newScore });
   };
 
+  // componentDidMount() {
+  //   this.handleHouseChoice();
+  // }
+
   render() {
     return (
       <div className="App">
@@ -79,24 +82,20 @@ class App extends Component {
               />
             ) : (
               <HouseChoose
-                choice={choice}
                 playerChoice={choice[this.state.playerChoice]}
                 houseChoice={choice[this.state.houseChoice]}
                 handleHouseChoice={this.handleHouseChoice}
               />
             )}
-            {
-              this.state.playerChoice === 'pending' ||
-              this.state.houseChoice === 'pending'
-                ? null
-                : 'outcome'
-              // <Outcome
-              //   playerChoice={this.state.playerChoice}
-              //   houseChoice={this.state.houseChoice}
-              //   playAgain={this.startNewRound}
-              //   incrementScore={this.incrementScore}
-              // />
-            }
+            {this.state.playerChoice === 'pending' ||
+            this.state.houseChoice === 'pending' ? null : (
+              <Outcome
+                playerChoice={this.state.playerChoice}
+                houseChoice={this.state.houseChoice}
+                playAgain={this.startNewRound}
+                incrementScore={this.incrementScore}
+              />
+            )}
           </Layout>
         </ContentWrapper>
       </div>

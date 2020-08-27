@@ -5,11 +5,13 @@ import ChoiceButton from './ChoiceButton';
 
 const StyledDiv = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   .choice {
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    text-align: center;
   }
   margin-bottom: 6.2rem;
   p {
@@ -31,10 +33,7 @@ const HouseChoose = ({ playerChoice, houseChoice, handleHouseChoice }) => {
         <p>YOU PICKED</p>
       </div>
       <div className="choice">
-        <ChoiceButton
-          choice={houseChoice}
-          handleHouseChoice={handleHouseChoice}
-        />
+        <ChoiceButton choice={houseChoice} />
         <p>THE HOUSE PICKED</p>
       </div>
     </StyledDiv>

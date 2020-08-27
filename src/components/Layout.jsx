@@ -34,6 +34,10 @@ const RulesButton = styled.button`
 
 const TopHalf = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 const Layout = ({ children, score }) => {
   return (

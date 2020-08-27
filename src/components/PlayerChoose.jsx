@@ -23,9 +23,6 @@ const StyledDiv = styled.div`
     width: 476px;
     height: 430px;
   }
-  button {
-    position: unset;
-  }
 
   .absolute {
     position: absolute;
