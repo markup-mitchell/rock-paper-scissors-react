@@ -31,15 +31,15 @@ const StyledDiv = styled.div`
     position: absolute;
   }
 
-  .rock {
+  .paper {
     top: 0;
     left: 0;
   }
-  .paper {
+  .scissors {
     top: 0;
     right: 0;
   }
-  .scissors {
+  .rock {
     display: flex;
     justify-content: center;
     width: 100%;

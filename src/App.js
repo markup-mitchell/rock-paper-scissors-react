@@ -14,19 +14,27 @@ import './App.css';
 const choice = {
   rock: {
     name: 'rock',
-    icon: icon_rock
+    icon: icon_rock,
+    bg: '#DB2E4D',
+    bgShadow: '#9D1634'
   },
   paper: {
     name: 'paper',
-    icon: icon_paper
+    icon: icon_paper,
+    bg: '#4664F4',
+    bgShadow: '#2A45C2'
   },
   scissors: {
     name: 'scissors',
-    icon: icon_scissors
+    icon: icon_scissors,
+    bg: '#EB9F0E',
+    bgShadow: '#C76C1B'
   },
   pending: {
     name: 'pending',
-    icon: null
+    icon: null,
+    bg: 'blue',
+    bgShadow: 'blue'
   }
 };
 
@@ -71,20 +79,24 @@ class App extends Component {
               />
             ) : (
               <HouseChoose
+                choice={choice}
                 playerChoice={choice[this.state.playerChoice]}
                 houseChoice={choice[this.state.houseChoice]}
                 handleHouseChoice={this.handleHouseChoice}
               />
             )}
-            {this.state.playerChoice === 'pending' ||
-            this.state.houseChoice === 'pending' ? null : (
-              <Outcome
-                playerChoice={this.state.playerChoice}
-                houseChoice={this.state.houseChoice}
-                playAgain={this.startNewRound}
-                incrementScore={this.incrementScore}
-              />
-            )}
+            {
+              this.state.playerChoice === 'pending' ||
+              this.state.houseChoice === 'pending'
+                ? null
+                : 'outcome'
+              // <Outcome
+              //   playerChoice={this.state.playerChoice}
+              //   houseChoice={this.state.houseChoice}
+              //   playAgain={this.startNewRound}
+              //   incrementScore={this.incrementScore}
+              // />
+            }
           </Layout>
         </ContentWrapper>
       </div>

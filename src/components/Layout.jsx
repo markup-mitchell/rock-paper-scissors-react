@@ -9,13 +9,26 @@ const LayoutWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   @media (min-width: 700px) {
     width: 700px;
-    button {
-      position: absolute;
-      bottom: 3.2rem;
-      right: 3.2rem;
-    }
+  }
+`;
+
+const RulesButton = styled.button`
+  background: transparent;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  border: solid thin white;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  width: 12.8rem;
+  @media (min-width: 700px) {
+    position: absolute;
+    bottom: 3.2rem;
+    right: 3.2rem;
   }
 `;
 
@@ -29,7 +42,7 @@ const Layout = ({ children, score }) => {
         <ScoreBox score={score} />
         {children}
       </TopHalf>
-      <button>RULES</button>
+      <RulesButton>RULES</RulesButton>
     </LayoutWrapper>
   );
 };
