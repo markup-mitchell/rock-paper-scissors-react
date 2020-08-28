@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import ChoiceButton from './ChoiceButton';
+import ChoiceDisplay from './ChoiceDisplay';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -29,11 +29,11 @@ const HouseChoose = ({ playerChoice, houseChoice, handleHouseChoice }) => {
   return (
     <StyledDiv>
       <div className="choice">
-        <ChoiceButton choice={playerChoice} />
+        <ChoiceDisplay choice={playerChoice} />
         <p>YOU PICKED</p>
       </div>
       <div className="choice">
-        <ChoiceButton choice={houseChoice} />
+        <ChoiceDisplay choice={houseChoice} />
         <p>THE HOUSE PICKED</p>
       </div>
     </StyledDiv>
