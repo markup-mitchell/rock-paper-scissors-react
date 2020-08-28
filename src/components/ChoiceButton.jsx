@@ -51,7 +51,9 @@ const StyledButton = styled.button`
   }
   img {
     z-index: 1;
-    width: 7.6rem;
+    @media (min-width: 700px) {
+      width: 7.6rem;
+    }
   }
 `;
 

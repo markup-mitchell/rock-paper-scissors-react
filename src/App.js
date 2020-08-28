@@ -44,8 +44,7 @@ class App extends Component {
     this.state = {
       score: 0,
       playerChoice: 'pending',
-      houseChoice: 'pending',
-      winner: 'pending'
+      houseChoice: 'pending'
     };
   }
   handleHouseChoice = () => {
