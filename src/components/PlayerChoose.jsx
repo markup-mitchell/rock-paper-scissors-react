@@ -15,7 +15,7 @@ const StyledDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  img {
+  .triangle {
     padding: 6.4rem;
     width: 60%;
   }
@@ -50,7 +50,7 @@ const PlayerChoose = ({
 }) => {
   return (
     <StyledDiv>
-      <img src={triangle} alt="" />
+      <img className="triangle" src={triangle} alt="" />
       <div className="rock absolute">
         <ChoiceButton choice={rock} handler={handlePlayerChoice} />
       </div>

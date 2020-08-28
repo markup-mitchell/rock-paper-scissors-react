@@ -6,7 +6,7 @@ import logo from '../images/logo.svg';
 const Header = styled.header`
   box-sizing: border-box;
   min-width: 0;
-  margin-bottom: 100px;
+  margin-bottom: 10rem;
   width: 100%;
   display: flex;
 
@@ -18,6 +18,7 @@ const Header = styled.header`
   @media (min-width: 700px) {
     padding: 1.8rem 2.4rem 1.8rem 3.3rem;
     border-radius: 1.5rem;
+    margin-bottom: 6.4rem;
   }
 `;
 

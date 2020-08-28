@@ -2,11 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  ${(p) => p.value === 'pending' && 'visibility: hidden;'}
-  transition: all .5s;
+  opacity: 1;
+  ${(p) => p.value === 'pending' && 'opacity: 0;'}
+  transition: opacity .2s;
   width: 13em;
   height: 13em;
-  background-color: ${(p) => p.bg};
+  background-color: transparent;
+  outline: none;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 2.4rem rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: box-shadow 0.2s;
+  }
   display: flex;
   position: relative;
   justify-content: center;
@@ -15,7 +23,6 @@ const StyledButton = styled.button`
   font-size: 10px;
   border: none;
   padding: 0;
-  box-shadow: 0 0.6rem 0 ${(p) => p.bgShadow};
   img {
     pointer-events: none;
   }
@@ -24,7 +31,7 @@ const StyledButton = styled.button`
     height: 20rem;
   }
   &:after {
-    transition: all 0.5s;
+    transition: opacity 0.2s;
     content: '';
     width: 100px;
     height: 100px;
@@ -44,27 +51,25 @@ const StyledButton = styled.button`
   }
   img {
     z-index: 1;
+    width: 7.6rem;
   }
 `;
 
-const InnerCircle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const OuterCircle = styled.div`
+  box-shadow: 0 0.6rem 0 ${(p) => p.bgShadow};
+  background-color: ${(p) => p.bg};
   border-radius: 50%;
-  box-shadow: inset 0 5px 0 #babfd4;
-  width: 10rem;
-  height: 10rem;
-  background-color: white;
 `;
 
 const ChoiceButton = ({ handler, choice: { name, icon, bg, bgShadow } }) => {
   return (
-    <StyledButton onClick={handler} value={name} bg={bg} bgShadow={bgShadow}>
-      {/* <InnerCircle> */}
-      <img src={icon} alt={name} />
-      {/* </InnerCircle> */}
-    </StyledButton>
+    <OuterCircle bg={bg} bgShadow={bgShadow}>
+      <StyledButton onClick={handler} value={name}>
+        {/* <InnerCircle> */}
+        <img className="icon" src={icon} alt={name} />
+        {/* </InnerCircle> */}
+      </StyledButton>
+    </OuterCircle>
   );
 };
 
