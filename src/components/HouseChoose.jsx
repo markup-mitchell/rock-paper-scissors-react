@@ -8,14 +8,23 @@ const StyledDiv = styled.div`
   width: 100%;
   justify-content: space-between;
   .choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
-    text-align: center;
+    @media (min-width: 700px) {
+      flex-direction: column-reverse;
+    }
   }
   margin-bottom: 6.2rem;
   p {
     margin-bottom: 0;
+    @media (min-width: 700px) {
+      margin-top: 2.5rem;
+      font-size: 2.4rem;
+    }
   }
   @media (min-width: 700px) {
     margin-bottom: 0;

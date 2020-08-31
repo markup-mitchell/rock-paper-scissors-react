@@ -51,14 +51,14 @@ const PlayerChoose = ({
   return (
     <StyledDiv>
       <img className="triangle" src={triangle} alt="" />
-      <div className="rock absolute">
-        <ChoiceButton choice={rock} handler={handlePlayerChoice} />
-      </div>
       <div className="paper absolute">
         <ChoiceButton choice={paper} handler={handlePlayerChoice} />
       </div>
       <div className="scissors absolute">
         <ChoiceButton choice={scissors} handler={handlePlayerChoice} />
+      </div>
+      <div className="rock absolute">
+        <ChoiceButton choice={rock} handler={handlePlayerChoice} />
       </div>
     </StyledDiv>
   );

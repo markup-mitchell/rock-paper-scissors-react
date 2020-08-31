@@ -65,7 +65,7 @@ const ScoreBox = ({ score }) => {
   return (
     <Header>
       <Logo src={logo} alt="" />
-      <Score>
+      <Score tabIndex="0">
         SCORE
         <span>{score}</span>
       </Score>

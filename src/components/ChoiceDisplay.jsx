@@ -58,6 +58,7 @@ const OuterCircle = styled.div`
   border-radius: 50%;
   @media (min-width: 700px) {
     box-shadow: 0 1.3rem 0 ${(p) => p.bgShadow};
+    margin-top: 6rem;
   }
 `;
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ScoreBox from './ScoreBox';
 import rules from '../images/image-rules.svg';
+import iconClose from '../images/icon-close.svg';
+
 const LayoutWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -25,10 +27,10 @@ const RulesButton = styled.button`
   font-weight: 600;
   letter-spacing: 2.5px;
   width: 12.8rem;
-  margin-top: 8rem;
+  position: absolute;
+  bottom: 3.2rem;
   @media (min-width: 700px) {
-    position: absolute;
-    bottom: 3.2rem;
+    margin-top: 8rem;
     right: 3.2rem;
     margin-top: 0;
   }
@@ -42,9 +44,19 @@ const TopHalf = styled.div`
   align-items: center;
 `;
 
-const Rules = styled.div`
+const RulesLayout = styled.div`
   display: none;
   ${(p) => p.viewRules && 'display: flex;'}
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Darkscreen = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
@@ -53,38 +65,68 @@ const Rules = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
   opacity: 0.6;
 `;
 
-const RulesBox = styled.div`
+const RulesImage = styled.section`
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
   padding: 32px;
   background-color: white;
+  border-radius: 0.8rem;
+  h1 {
+    font-size: 3.2rem;
+    font-weight: semi-bold;
+    line-height: 3.2rem;
+    margin: 0;
+    color: #3b4262;
+  }
+  .rules {
+    padding: 4.8rem 1.8rem 0;
+  }
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  button {
+    background: transparent;
+    border: none;
+  }
 `;
 
 // better to have a fn toggle a CSS class or to make the whole component conditional on state?
 
 const Layout = ({ children, score }) => {
-  let [viewRules, toggleRules] = useState(false);
+  let [viewRules, setRules] = useState(false);
+  const toggleRules = () => setRules((viewRules = !viewRules));
   return (
     <LayoutWrapper>
-      <Rules
-        viewRules={viewRules}
-        handleClose={() => toggleRules((viewRules = false))}
-      >
-        <RulesBox>
-          <img src={rules} alt="" />
-        </RulesBox>
-      </Rules>
       <>
         <TopHalf>
           <ScoreBox score={score} />
           {children}
         </TopHalf>
       </>
-      <RulesButton onClick={() => toggleRules((viewRules = true))}>
-        RULES
-      </RulesButton>
+      <RulesButton onClick={toggleRules}>RULES</RulesButton>
+      <RulesLayout viewRules={viewRules}>
+        <Darkscreen />
+        <RulesImage>
+          <div>
+            <h1>RULES</h1>
+            <button aria-label="Close" onClick={toggleRules}>
+              <img src={iconClose} alt="" />
+            </button>
+          </div>
+          <img
+            className="rules"
+            src={rules}
+            alt="Rock beats Scissors. Scissors beats Paper. Paper beats Rock"
+          />
+        </RulesImage>
+      </RulesLayout>
     </LayoutWrapper>
   );
 };
