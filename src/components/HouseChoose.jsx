@@ -17,6 +17,9 @@ const StyledDiv = styled.div`
   p {
     margin-bottom: 0;
   }
+  @media (min-width: 700px) {
+    margin-bottom: 0;
+  }
 `;
 
 const HouseChoose = ({ playerChoice, houseChoice, handleHouseChoice }) => {

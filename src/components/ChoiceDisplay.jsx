@@ -9,12 +9,6 @@ const StyledDiv = styled.div`
   height: 13em;
   background-color: transparent;
   outline: none;
-  &:hover,
-  &:focus {
-    box-shadow: 0 0 0 2.4rem rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transition: box-shadow 0.2s;
-  }
   display: flex;
   position: relative;
   justify-content: center;

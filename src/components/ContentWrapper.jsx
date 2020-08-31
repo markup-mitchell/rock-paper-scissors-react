@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
   box-sizing: border-box;
   background: purple;
   padding: 3.2rem;
