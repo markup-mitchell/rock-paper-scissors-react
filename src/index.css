@@ -3,6 +3,7 @@
 html {
   font-size: 10px;
   font-family: 'Barlow Semi Condensed', sans-serif;
+  height: auto;
 }
 body {
   margin: 0;

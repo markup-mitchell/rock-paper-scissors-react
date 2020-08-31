@@ -50,7 +50,6 @@ const RulesLayout = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-
   z-index: 2;
   align-items: center;
   justify-content: center;
@@ -69,8 +68,12 @@ const Darkscreen = styled.div`
 `;
 
 const RulesImage = styled.section`
-  position: relative;
+  position: fixed;
   z-index: 6;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   padding: 32px;
